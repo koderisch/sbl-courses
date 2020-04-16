@@ -1,0 +1,15 @@
+<ul class="courses">
+  <li class="card" id="sbl-course-37786" *ngFor="let course of courses">
+    <div class="card-container">
+      <a href="{{ course.url }}">
+        <div class="image-container">
+          <img src="{{ course.image }}" />
+          <span *ngIf="course.runningTime" class="running-time"
+            ><span class="text">{{ course.runningTime }} mins</span></span
+          >
+        </div>
+        <h3>{{ course.title }}</h3>
+      </a>
+    </div>
+  </li>
+</ul>
