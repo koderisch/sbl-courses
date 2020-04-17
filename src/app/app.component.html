@@ -1,0 +1,29 @@
+<div class="content">
+  <h1>Scott's Bass Lessons</h1>
+
+  <h2>Courses</h2>
+
+  <div *ngIf="error" class="error">
+    <p>Error while loading data.</p>
+    <p>
+      Try <span (click)="loadData()" class="link">reloading</span> the list. See
+      below for debug information
+    </p>
+    <pre>{{ error }}</pre>
+  </div>
+  <ul class="courses">
+    <li class="card" id="sbl-course-37786" *ngFor="let course of courses">
+      <div class="card-container">
+        <a href="{{ course.url }}">
+          <div class="image-container">
+            <img src="{{ course.image }}" />
+            <span *ngIf="course.runningTime" class="running-time"
+              ><span class="text">{{ course.runningTime }} mins</span></span
+            >
+          </div>
+          <h3>{{ course.title }}</h3>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
