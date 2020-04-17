@@ -19,17 +19,25 @@ export class AppComponent implements OnInit {
   error = '';
 
   ngOnInit() {
-    this.http
-      .get<CoursesJson>(this.JsonDataUrl)
-      .subscribe((jsonData) => this.loadCourses(jsonData),(err) => { this.setErrorMsg(err) });
+    this.loadData();
   }
 
-  loadCourses(jsonData) {
+  loadData() {
+    this.error = '';
+    this.http.get<CoursesJson>(this.JsonDataUrl).subscribe(
+      (jsonData) => this.processCourses(jsonData),
+      (err) => {
+        this.setErrorMsg(err);
+      },
+    );
+  }
+
+  processCourses(jsonData) {
     this.courses = jsonData.items;
   }
 
   setErrorMsg(err) {
-    console.log('errors',err)
+    console.log('errors', err);
     this.error = err.name + ': ' + err.message;
   }
 }
